@@ -5,6 +5,9 @@ using System.Data.SqlTypes;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 //SQLite
 builder.Services.AddDbContext<API_Context>(opt =>
     opt.UseSqlite("Data Source=myapp.db"));
